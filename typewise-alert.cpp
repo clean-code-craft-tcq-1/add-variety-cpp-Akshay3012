@@ -1,6 +1,6 @@
 #include "typewise-alert.h"
 #include <stdio.h>
-#include <map.h>
+#include <map>
 using namespace std;
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {

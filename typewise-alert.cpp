@@ -46,10 +46,10 @@ void sendToController(BreachType breachType) {
   printf("%x : %x\n", header, breachType);
 }
 
-map<BreachType, int> BreachMessage = {
-  {NORMAL, 1},
-  {TOO_LOW, 2},
-  {TOO_HIGH, 3}
+map<BreachType, char[]> BreachMessage = {
+  {NORMAL, "normal"},
+  {TOO_LOW, "tooLow"},
+  {TOO_HIGH, "tooHigh"}
 
 };
 

@@ -14,3 +14,8 @@ TEST_CASE("infers the breach according to upper limits") {
 TEST_CASE("doesn't infers the breach according to limits") {
   REQUIRE(inferBreach(22, 20, 30) == NORMAL);
 }
+
+TEST_CASE("Check and Alert to controller") {
+  REQUIRE(checkAndAlert(TO_CONTROLLER, PASSIVE_COOLING, 12) == NORMAL);
+}
+

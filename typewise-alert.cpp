@@ -48,13 +48,13 @@ void sendToController(BreachType breachType) {
 
 map<BreachType, char*> BreachMessage = {
   {NORMAL, "normal"},
-  {TOO_LOW, "tooLow"},
-  {TOO_HIGH, "tooHigh"}
+  {TOO_LOW, "too Low"},
+  {TOO_HIGH, "too High"}
 
 };
 
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
   printf("To: %s\n", recepient);
-  printf("Hi, the temperature is \n");
+  printf("Hi, the temperature is : %s\n", BreachMessage[breachType]);
 }

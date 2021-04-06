@@ -17,7 +17,7 @@ map<CoolingType, pair<double, double>> CoolingLimts = {
   {PASSIVE_COOLING, make_pair(0,35)},
   {HI_ACTIVE_COOLING, make_pair(0,45)},
   {MED_ACTIVE_COOLING, make_pair(0,40)}
-}
+};
 
 BreachType classifyTemperatureBreach(CoolingType coolType, double temperatureInC) 
 {

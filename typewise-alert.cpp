@@ -47,9 +47,9 @@ void sendToController(BreachType breachType) {
 }
 
 map<BreachType, char[]> BreachMessage = {
-  {TOO_LOW, 'too low'},
-  {TOO_HIGH, 'too low'},
-  {NORMAL, 'normal'}
+  {TOO_LOW, "too low"},
+  {TOO_HIGH, "too high"},
+  {NORMAL, "normal"}
 };
 
 void sendToEmail(BreachType breachType) {

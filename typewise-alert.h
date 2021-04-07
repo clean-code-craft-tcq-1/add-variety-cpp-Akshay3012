@@ -1,5 +1,7 @@
 #pragma once
-#include <string>
+#include<map>
+#include<string>
+using namespace std;
 
 typedef enum {
   PASSIVE_COOLING,

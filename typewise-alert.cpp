@@ -32,44 +32,44 @@ void checkAndAlert( AlertTarget *alertTarget, BatteryCharacter batteryChar, doub
 
 }
 
-bool SendToEmailAlert::sendAlert(BreachType breachType)
+void SendToEmailAlert::sendAlert(BreachType breachType)
 {
     sendToEmail(breachType);
-    return true;
 }
 
 
-bool SendToControllerAlert::sendAlert(BreachType breachType)
+void SendToControllerAlert::sendAlert(BreachType breachType)
 {
     sendToController(breachType);
-    return true;
 }
 
-bool SendToConsoleAlert::sendAlert(BreachType breachType)
+void SendToConsoleAlert::sendAlert(BreachType breachType)
 {
     sendToConsole(breachType);
-    return true;
 }
 
-map<BreachType, char*> BreachMessage = {
-  {NORMAL, "normal"},
-  {TOO_LOW, "too Low"},
-  {TOO_HIGH, "too High"}
+map<BreachType, string> BreachMessage = {
+  {NORMAL, "The Temperature is Normal"},
+  {TOO_LOW, "The Temperature is Too Low"},
+  {TOO_HIGH, "The Temperature is Too High"}
 
 };
 
-void sendToEmail(BreachType breachType) {
+string sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
   printf("To: %s\n", recepient);
-  printf("Hi, the temperature is : %s\n", BreachMessage[breachType]);
+  printf("Hi, : %s\n", BreachMessage[breachType]);
+  return BreachMessage[breachType];
 }
 
-void sendToController(BreachType breachType) {
+string sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
   printf("%x : %x\n", header, breachType);
+  return BreachMessage[breachType];
 }
 
-void sendToConsole(BreachType breachType) 
+string sendToConsole(BreachType breachType) 
 {
   printf("Hi, the BMS temperature is %s\n", BreachMessage[breachType]);  
+  return BreachMessage[breachType];
 }

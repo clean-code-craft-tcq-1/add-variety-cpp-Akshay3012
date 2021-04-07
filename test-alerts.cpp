@@ -18,7 +18,7 @@ TEST_CASE("checks the temperature breach for passive cooling") {
 
 TEST_CASE("checks the temperature breach for passive cooling") 
 {
-  AlertTarget* objEmailAlert = new EmailAlert;
+  AlertTarget* objEmailAlert = new SendToEmailAlert;
   BatteryCharacter battery1 = { PASSIVE_COOLING , "Brand1"};
   REQUIRE(checkAndAlert(objEmailAlert, battery1, 50) == "The Temperature is Too High");
 

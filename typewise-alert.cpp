@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;

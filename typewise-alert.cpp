@@ -26,28 +26,28 @@ BreachType classifyTemperatureBreach(CoolingType coolType, double temperatureInC
   return inferBreach(temperatureInC, CoolingLimts[coolType].first, CoolingLimts[coolType].second);
 }
 
-void checkAndAlert( AlertTarget *alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+string checkAndAlert( AlertTarget *alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
   BreachType breachType = classifyTemperatureBreach( batteryChar.coolingType, temperatureInC);
 
-  alertTarget->sendAlert(breachType);
+  return alertTarget->sendAlert(breachType);
 
 }
 
-void SendToEmailAlert::sendAlert(BreachType breachType)
+string SendToEmailAlert::sendAlert(BreachType breachType)
 {
-    sendToEmail(breachType);
+    return sendToEmail(breachType);
 }
 
 
-void SendToControllerAlert::sendAlert(BreachType breachType)
+string SendToControllerAlert::sendAlert(BreachType breachType)
 {
-    sendToController(breachType);
+    return sendToController(breachType);
 }
 
-void SendToConsoleAlert::sendAlert(BreachType breachType)
+string SendToConsoleAlert::sendAlert(BreachType breachType)
 {
-    sendToConsole(breachType);
+    return stringsendToConsole(breachType);
 }
 
 map<BreachType, string> BreachMessage = {

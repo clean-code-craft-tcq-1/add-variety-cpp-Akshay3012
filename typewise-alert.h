@@ -25,31 +25,31 @@ typedef struct {
 class AlertTarget
 {
 public:
-	virtual bool sendAlert(BreachType) = 0;
+	virtual void sendAlert(BreachType) = 0;
 };
 
 class SendToEmailAlert : public AlertTarget
 {
 public:
-	bool sendAlert(BreachType);
+	void sendAlert(BreachType);
 };
 
 class SendToControllerAlert : public AlertTarget
 {
 public:
-	bool sendAlert(BreachType);
+	void sendAlert(BreachType);
 };
 
 class SendToConsoleAlert : public AlertTarget
 {
 public:
-	bool sendAlert(BreachType);
+	void sendAlert(BreachType);
 };
 
 void checkAndAlert(
   AlertTarget* alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 //void sendAlert(AlertTarget alertTarget, BreachType breachType);
 
-void sendToController(BreachType breachType);
-void sendToEmail(BreachType breachType);
-void sendToConsole(BreachType breachType);
+string sendToController(BreachType breachType);
+string sendToEmail(BreachType breachType);
+string sendToConsole(BreachType breachType);

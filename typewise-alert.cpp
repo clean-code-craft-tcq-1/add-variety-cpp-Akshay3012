@@ -24,24 +24,31 @@ BreachType classifyTemperatureBreach(CoolingType coolType, double temperatureInC
   return inferBreach(temperatureInC, CoolingLimts[coolType].first, CoolingLimts[coolType].second);
 }
 
-void checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+void checkAndAlert( AlertTarget *alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
-  BreachType breachType = classifyTemperatureBreach(
-    batteryChar.coolingType, temperatureInC
-  );
+  BreachType breachType = classifyTemperatureBreach( batteryChar.coolingType, temperatureInC);
 
-  switch(alertTarget) {
-    case TO_CONTROLLER:
-      sendToController(breachType);
-      break;
-    case TO_EMAIL:
-      sendToEmail(breachType);
-      break;
-   // case TO_CONSOLE:
-     // sendToConsole(breachType);
-      //break;
-  }
+  alertTarget->sendAlert(breachType);
+
+}
+
+bool SendToEmailAlert::sendAlert(BreachType breachType)
+{
+    sendToEmail(breachType);
+    return true;
+}
+
+
+bool SendToControllerAlert::sendAlert(BreachType breachType)
+{
+    sendToController(breachType);
+    return true;
+}
+
+bool SendToConsoleAlert::sendAlert(BreachType breachType)
+{
+    sendToConsole(breachType);
+    return true;
 }
 
 
@@ -63,7 +70,12 @@ void sendToEmail(BreachType breachType) {
   printf("Hi, the temperature is : %s\n", BreachMessage[breachType]);
 }
 
-//void sendToConsole(BreachType breachType) 
-//{
-  //printf("Hi, the BMS temperature is %s\n", BreachMessage[breachType]);  
-//}
+void sendToController(BreachType breachType) {
+  const unsigned short header = 0xfeed;
+  printf("%x : %x\n", header, breachType);
+}
+
+void sendToConsole(BreachType breachType) 
+{
+  printf("Hi, the BMS temperature is %s\n", BreachMessage[breachType]);  
+}

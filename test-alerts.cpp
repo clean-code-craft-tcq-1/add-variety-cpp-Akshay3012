@@ -16,7 +16,7 @@ TEST_CASE("checks the temperature breach for passive cooling") {
   REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, 20) == NORMAL);
 }
 
-TEST_CASE("checks the temperature breach for passive cooling") 
+TEST_CASE("check and alert") 
 {
   AlertTarget* objEmailAlert = new SendToEmailAlert;
   BatteryCharacter battery1 = { PASSIVE_COOLING , "Brand1"};

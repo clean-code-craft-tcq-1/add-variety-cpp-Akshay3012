@@ -16,3 +16,10 @@ TEST_CASE("checks the temperature breach for passive cooling") {
   REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, 20) == NORMAL);
 }
 
+TEST_CASE("checks the temperature breach for passive cooling") 
+{
+  AlertTarget* objEmailAlert = new EmailAlert;
+  BatteryCharacter battery1 = { PASSIVE_COOLING , "Brand1"};
+  REQUIRE(checkAndAlert(objEmailAlert, battery1, 50) == "The Temperature is Too High");
+
+}

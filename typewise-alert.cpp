@@ -47,7 +47,7 @@ string SendToControllerAlert::sendAlert(BreachType breachType)
 
 string SendToConsoleAlert::sendAlert(BreachType breachType)
 {
-    return stringsendToConsole(breachType);
+    return sendToConsole(breachType);
 }
 
 map<BreachType, string> BreachMessage = {

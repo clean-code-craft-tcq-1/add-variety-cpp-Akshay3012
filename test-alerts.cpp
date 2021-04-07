@@ -21,5 +21,13 @@ TEST_CASE("check and alert")
   AlertTarget* objEmailAlert = new SendToEmailAlert;
   BatteryCharacter battery1 = { PASSIVE_COOLING , "Brand1"};
   REQUIRE(checkAndAlert(objEmailAlert, battery1, 50) == "The Temperature is Too High");
+  
+  AlertTarget* objContyrollerAlert = new SendToControllerAlert;
+  BatteryCharacter battery2 = { HI_ACTIVE_COOLING , "Brand2"};
+  REQUIRE(checkAndAlert(objContyrollerAlert, battery2, 30) == "The Temperature is Normal");
+  
+  AlertTarget* objConsoleAlert = new SendToConsoleAlert;
+  BatteryCharacter battery3 = { MED_ACTIVE_COOLING , "Brand3"};
+  REQUIRE(checkAndAlert(objConsoleAlert, battery1, -10) == "The Temperature is Too Low");
 
 }

@@ -25,25 +25,22 @@ BreachType classifyTemperatureBreach(CoolingType coolType, double temperatureInC
 }
 
 void checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) 
-{
+    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
-  BreachType breachType = classifyTemperatureBreach( batteryChar.coolingType, temperatureInC );
-  sendAlert(alertTarget, breachType);
-}
+  BreachType breachType = classifyTemperatureBreach(
+    batteryChar.coolingType, temperatureInC
+  );
 
-void sendAlert(AlertTarget alertTarget, BreachType breachType)
-{
-    switch(alertTarget) {
+  switch(alertTarget) {
     case TO_CONTROLLER:
       sendToController(breachType);
       break;
     case TO_EMAIL:
       sendToEmail(breachType);
       break;
-    case TO_CONSOLE:
-      sendToConsole(breachType);
-      break;
+   // case TO_CONSOLE:
+     // sendToConsole(breachType);
+      //break;
   }
 }
 
@@ -66,7 +63,7 @@ void sendToEmail(BreachType breachType) {
   printf("Hi, the temperature is : %s\n", BreachMessage[breachType]);
 }
 
-void sendToConsole(BreachType breachType) 
-{
-  printf("Hi, the BMS temperature is %s\n", BreachMessage[breachType]);  
-}
+//void sendToConsole(BreachType breachType) 
+//{
+  //printf("Hi, the BMS temperature is %s\n", BreachMessage[breachType]);  
+//}

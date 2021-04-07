@@ -28,28 +28,28 @@ typedef struct {
 class AlertTarget
 {
 public:
-	virtual void sendAlert(BreachType) = 0;
+	virtual string sendAlert(BreachType) = "";
 };
 
 class SendToEmailAlert : public AlertTarget
 {
 public:
-	void sendAlert(BreachType);
+	string sendAlert(BreachType);
 };
 
 class SendToControllerAlert : public AlertTarget
 {
 public:
-	void sendAlert(BreachType);
+	string sendAlert(BreachType);
 };
 
 class SendToConsoleAlert : public AlertTarget
 {
 public:
-	void sendAlert(BreachType);
+	string sendAlert(BreachType);
 };
 
-void checkAndAlert(
+string checkAndAlert(
   AlertTarget* alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 //void sendAlert(AlertTarget alertTarget, BreachType breachType);
 

@@ -28,7 +28,7 @@ typedef struct {
 class AlertTarget
 {
 public:
-	virtual string sendAlert(BreachType) = "";
+	virtual string sendAlert(BreachType) = 0;
 };
 
 class SendToEmailAlert : public AlertTarget

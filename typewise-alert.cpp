@@ -1,6 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 #include <map>
+#include <iostream>
 using namespace std;
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
@@ -57,19 +58,19 @@ map<BreachType, string> BreachMessage = {
 
 string sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  printf("To: %s\n", recepient);
-  printf("Hi, : %s\n", BreachMessage[breachType]);
+  cout << "To: " << recepient << "\n" << endl;
+  cout << BreachMessage[breachType] << endl;
   return BreachMessage[breachType];
 }
 
 string sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
-  printf("%x : %x\n", header, breachType);
+  cout << BreachMessage[breachType] << endl;
   return BreachMessage[breachType];
 }
 
 string sendToConsole(BreachType breachType) 
 {
-  printf("Hi, the BMS temperature is %s\n", BreachMessage[breachType]);  
+  cout << BreachMessage[breachType] << endl;
   return BreachMessage[breachType];
 }

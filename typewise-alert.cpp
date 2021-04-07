@@ -34,7 +34,7 @@ void checkAndAlert(
 
 void sendAlert(AlertTarget alertTarget, BreachType breachType)
 {
-    switch(alertTarget); {
+    switch(alertTarget) {
     case TO_CONTROLLER:
       sendToController(breachType);
       break;
